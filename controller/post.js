@@ -2,7 +2,6 @@
 import prisma from "../lib/prisma.js"
 
 
-
 export const createPost = async (payload) => {
     const newUser = await prisma.post.create({
         data: {
@@ -14,8 +13,8 @@ export const createPost = async (payload) => {
 
 
 export const getAllPost = async () => {
-    const newUser = await prisma.post.findMany()
-    return newUser
+    const getAllPost = await prisma.post.findMany()
+    return getAllPost
 }
 
 export const deletePost = async postId => {

@@ -1,12 +1,14 @@
 import express from "express"
-import { createPost, deletePost, getAllPost, } from "../controller/post.js";
+import { createPost, deletePost, getAllPost } from "../controller/post.js";
+import verify from '../middleware/verifyToken.js'
 const postRouter = express.Router();
 
-postRouter.get("/posts", async (req, res) => {
-    const deletePost = await getAllPost()
-    return res.json(deletePost)
-})
 
+
+postRouter.get("/posts", verify, async (req, res) => {
+    const getPosts = await getAllPost()
+    return res.json(getPosts)
+})
 
 postRouter.post("/posts", async (req, res) => {
     const payload = req.body
@@ -15,6 +17,7 @@ postRouter.post("/posts", async (req, res) => {
 
 })
 
+
 postRouter.delete("/posts", async (req, res) => {
     const postId = req.body
     console.log("post", postId)
@@ -22,6 +25,8 @@ postRouter.delete("/posts", async (req, res) => {
     return res.json(post)
 
 })
+
+
 
 export default postRouter
 

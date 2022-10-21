@@ -4,6 +4,9 @@ const userRouter = express.Router();
 
 
 userRouter.post("/users", async (req, res) => {
+
+    const payload = req.body
+
     const newUser = await createNewUser()
     return res.json(newUser)
 })
