@@ -32,7 +32,7 @@ authRouter.post("/login", async (req, res) => {
     })
 
     if (!user) {
-        return res.send("Email Not Found")
+        return res.send("Email Not Founds")
     }
 
     const passwordCompare = bcrypt.compareSync(req.body.password, user.password)
